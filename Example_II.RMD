@@ -1,0 +1,58 @@
+---
+title: "Ligada_Example"
+author: "Woubie"
+date: "17 October 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Biscate.co.mz and the Mozambican labour market
+
+Biscate.co.mz is a platform created by UX, an award-winning Mozambican company that develops locally-relevant, market-driven, and self-sustainable tech-based products and services for high social and economic impact in emerging markets. Biscate.co.mz is a platform that aims to connect blue-collar workers, like e.g. carpenters and painters, to clients that require their services. 
+
+This document presents some preliminary analysis of some initial data gathered through this platform
+
+```{r, echo=FALSE}
+setwd("C:/Users/pjasper/Dropbox (OPML)/Documents/R/GitTest/paul_test")
+workers <- read.csv ("workers_1_data.csv", header=TRUE)
+#Changing the following variables to factors 
+workers$experience_name <- as.factor(workers$experience_name)
+workers$education_name <- as.factor(workers$education_name)
+workers$district_name <- as.factor(workers$district_name)
+workers$province_name <- as.factor(workers$province_name)
+workers$profession_name <- as.factor(workers$profession_name)
+workers$user_status <- as.factor(workers$user_status)
+
+```
+
+#Structure of the dataset
+```{r, echo=FALSE}
+str(workers)
+```
+
+#Summary of workers price
+
+```{r, echo=FALSE}
+summary(workers$price_score)
+summary(workers$quality_score)
+```
+
+#Status of Users 
+```{r, echo=FALSE}
+plot(workers$user_status, main="Status of Users", xlab="Status",ylab="Number of People")
+```
+
+# Education level of workers
+```{r, echo=FALSE}
+plot(workers$education_name, main="Education Level of Workers", xlab="Education Level",ylab="Number of People")
+```
+
+# Experience level of workers
+```{r, echo=FALSE}
+plot(workers$experience_name, main="Experience Level of Workers", xlab="Experience Level",ylab="Number of People")
+```
+
